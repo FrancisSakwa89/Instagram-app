@@ -25,3 +25,29 @@ def picture_detail(request, id):
     pic = get_object_or_404(Picture, pk=id)
     user_likes_this = pic.like_set.filter(user=request.user) and True or False    
 
+@login_required(login_url='/accounts/login/')
+def search(request):
+  ida = request.user.id
+  profile = Profile.objects.get(user=ida)
+
+  this_user = request.user.username
+
+  if 'user' in request.GET and request.GET['user']:
+    search_term = request.GET.get('user')
+    message = f'{search_term}'
+    title = 'Search Results'
+
+    try:
+      no_ws = search_term.strip()
+      searched_users = User.objects.filter(username__icontains = no_ws).exclude(username = this_user)
+
+    except ObjectDoesNotExist:
+      searched_users = []
+
+    return render(request, 'search.html',{'message':message ,'title':title, 'searched_users':searched_users,'profile':profile})
+
+  else:
+    message = 'You haven\'t searched for any users'
+    
+    title = 'Search Error'
+    return render(request,'search.html',{'message':message,'title':title,'profile':profile})
