@@ -1,9 +1,9 @@
 from django.shortcuts import render,redirect
-from .models import Image, Profile,Like
+from .models import Image, Profile, Comment, Likes, Follow
 from django.http import HttpResponse, Http404, HttpResponseRedirect
 from .forms import InstaLetterForm
-from .models import InstaLetterRecipients
 from django.contrib.auth.decorators import login_required
+from .email import send_welcome_email
 
 # Create your views here.
 @login_required(login_url='/accounts/login/')
@@ -54,3 +54,6 @@ def search_results(request):
     
     title = 'Search Error'
     return render(request,'search.html',{'message':message,'title':title,'profile':profile})
+
+def subscribe(request):
+    return render(request,'subscribe.html')
