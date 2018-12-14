@@ -23,3 +23,6 @@ class Like(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     # p = Profile.objects.get(...)
     # number_of_likes = p.like_set.all().count()    
+class InstaLetterRecipients(models.Model):
+   name = models.CharField(max_length = 30)
+   email = models.EmailField()
