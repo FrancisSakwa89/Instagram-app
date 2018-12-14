@@ -1,0 +1,46 @@
+{% load bootstrap3 %}
+{% load static%}
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+
+  {% if title %}
+  <title> GALLERY WEB - {{title}}</title>
+  {% else %}
+    <title> GALLERY </title>
+  {% endif %}
+
+  {% block styles %}
+    {% bootstrap_css %}
+  {% endblock %}
+
+</head>
+<body>
+    {% include "navbar.html" %}
+    {% block content %} 
+    <h1 class='text-center'> This are photos taken on {{date|date:"l d-F Y"}}</h1> 
+    {%endblock%}
+
+    {% block scripts %}
+    {{block.super}}
+    <script>
+      function copyLink(id) {
+        /* Get the text field */
+        var copyText = document.getElementById("link" + id);
+        /* Select the text field */
+        copyText.select();
+        /* Copy the text inside the text field */
+        document.execCommand("copy");
+    
+      }
+    </script>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        
+     {% bootstrap_javascript %}
+    {% endblock %}
+        <script src="" async defer></script>
+
+</body>
+</html>
