@@ -3,11 +3,8 @@ from .models import Image, Profile,Like
 from django.http import HttpResponse, Http404, HttpResponseRedirect
 from .forms import InstaLetterForm
 from .models import InstaLetterRecipients
-
-
 # Create your views here.
 def welcome(request):
-    # return render(request,'index.html')
     if request.method == 'POST':
         form = InstaLetterForm(request.POST)
         if form.is_valid():

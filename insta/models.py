@@ -7,10 +7,10 @@ class Image(models.Model):
    Image_name = models.CharField(max_length =30)
    Image_caption = models.TextField(max_length =40)
    Likes = models.CharField(max_length =20,blank =True)
-#    Profile = models.ForeignKey(Profile, null = True,related_name='image')
+   profile = models.ForeignKey(User, null = True,related_name='image')
    pub_date = models.DateTimeField(auto_now_add=True, null=True)
    comment = models.ForeignKey
-   user= models.ForeignKey(User, null=True, blank=True, on_delete=models.CASCADE)
+#    user= models.ForeignKey(User, null=True, blank=True, on_delete=models.CASCADE)
 
 class Profile(models.Model):
    Profile_photo = models.ImageField(upload_to = 'images/',blank=True)
