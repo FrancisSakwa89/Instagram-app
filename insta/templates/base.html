@@ -1,46 +1,40 @@
 {% load bootstrap3 %}
-{% load static%}
+{% load static %}
 
 <!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
+<html class="no-js"> 
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    {% if title %}
+    <title>Insta - {{title}}</title>
+    {% else %}
+    <title>Insta</title>
+    {% endif %}
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  {% if title %}
-  <title> GALLERY WEB - {{title}}</title>
-  {% else %}
-    <title> GALLERY </title>
-  {% endif %}
-
-  {% block styles %}
+    {% block styles %}
     {% bootstrap_css %}
-  {% endblock %}
-
-</head>
-<body>
-    {% include "navbar.html" %}
-    {% block content %} 
-    <h1 class='text-center'> This are photos taken on {{date|date:"l d-F Y"}}</h1> 
-    {%endblock%}
-
-    {% block scripts %}
-    {{block.super}}
-    <script>
-      function copyLink(id) {
-        /* Get the text field */
-        var copyText = document.getElementById("link" + id);
-        /* Select the text field */
-        copyText.select();
-        /* Copy the text inside the text field */
-        document.execCommand("copy");
-    
-      }
-    </script>
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-        
-     {% bootstrap_javascript %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
     {% endblock %}
-        <script src="" async defer></script>
 
-</body>
+  </head>
+  <body>
+
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+
+    {% include 'navbar.html' %}
+
+    <div id="content">
+      {% block content %}{% endblock %}
+    </div>
+    {% block scripts %}
+  
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+      {% bootstrap_javascript %}
+    {% endblock %}
+    
+    <script src="" async defer></script>
+  </body>
 </html>
