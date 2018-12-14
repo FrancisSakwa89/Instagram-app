@@ -9,7 +9,7 @@ from .models import InstaLetterRecipients
 def welcome(request):
     # return render(request,'index.html')
     if request.method == 'POST':
-        form = NewsLetterForm(request.POST)
+        form = InstaLetterForm(request.POST)
         if form.is_valid():
             name = form.cleaned_data['your_name']
             email = form.cleaned_data['email']
