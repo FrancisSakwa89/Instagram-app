@@ -3,6 +3,8 @@ from .models import Image, Profile,Like
 from django.http import HttpResponse, Http404, HttpResponseRedirect
 from .forms import InstaLetterForm
 from .models import InstaLetterRecipients
+from django.contrib.auth.decorators import login_required
+
 # Create your views here.
 def welcome(request):
     if request.method == 'POST':
