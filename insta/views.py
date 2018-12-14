@@ -6,6 +6,7 @@ from .models import InstaLetterRecipients
 from django.contrib.auth.decorators import login_required
 
 # Create your views here.
+@login_required(login_url='/accounts/login/')
 def welcome(request):
     if request.method == 'POST':
         form = InstaLetterForm(request.POST)
@@ -28,9 +29,9 @@ def picture_detail(request, id):
     user_likes_this = pic.like_set.filter(user=request.user) and True or False    
 
 @login_required(login_url='/accounts/login/')
-def search(request):
-  ida = request.user.id
-  profile = Profile.objects.get(user=ida)
+def search_results(request):
+  frank = request.user.id
+  profile = Profile.objects.get(user=frank)
 
   this_user = request.user.username
 

@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container">
+        <div class="intro">
+                <h2>Search Results</h2>
+            </div>
+            <hr>
+        
+{% if searched_users %}
+    <h5>Found {{ searched_users|length }} users for the searched term '{{message}}'</h5>
+{% else %}
+    <h5> Found 0 users for the search term '{{message}}'</h5>
+{% endif %}
+
+<br>
+
+{% if searched_users %}
+<ul class="list-group list-group-flush">
+        {% for user in searched_users %}
+        <li class="list-group-item" style="background-color: transparent;">
+            <p>{{user.username}}
+<a class="follow" href="{% url 'follow' user.id %}">
+        <button type="button" class="btn btn-info">Follow</button>       
+</a>
+</li>
+        {% endfor %}
+</ul>
+{% endif %}
+
+
+
+</div>
+
+{% endblock %}
