@@ -7,6 +7,10 @@ from .email import send_welcome_email
 from django.core.exceptions import ObjectDoesNotExist
 from .forms import NewImageForm, NewCommentForm, NewProfileForm
 from django.contrib.auth.models import User
+from django.shortcuts import get_object_or_404
+from django.db.models import Q
+from django.urls import reverse
+
 # Create your views here.
 @login_required(login_url='/accounts/login/')
 def welcome(request):
@@ -58,6 +62,7 @@ def search_results(request):
 
 def subscribe(request):
     return render(request,'subscribe.html')
+    return redirect('welcome')
 
 def newimage(request):
   ida = request.user.id

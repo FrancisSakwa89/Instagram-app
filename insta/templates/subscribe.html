@@ -1,4 +1,6 @@
-<form  action="{%url 'welcome'%}" method="post" style="margin-left: 30%;margin-right: 30%;color: white">
+{% extends "base.html" %}
+{% load bootstrap3 %}
+<form  action="{%url 'subscribe'%}" method="post" style="margin-left: 30%;margin-right: 30%;color: white">
         {%csrf_token%}
     
         {% bootstrap_form letterForm layout='inline' %}

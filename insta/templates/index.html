@@ -1,37 +1,69 @@
-{% extends "base.html" %}
-{% load bootstrap3 %}
-{% block content %}
-<div class="container-fluid" style="background: linear-gradient(to right, #141e30, #243b55);">
-    <form  action="{%url 'welcome'%}" method="post" style="margin-left: 30%;margin-right: 30%;color: white">
-      {%csrf_token%}
-  
-      {% bootstrap_form letterForm layout='inline' %}
-      <input type="submit" class="btn btn-primary" value="Subscribe">
+{% extends "base.html" %} {% load bootstrap3 %} {% block content %}
+<div class="jumbotron">
+        <link href="https://fonts.googleapis.com/css?family=Shadows+Into+Light|ZCOOL+KuaiLe" rel="stylesheet">
+    <style>
+        .jumbotron {
+            background-image: url('https://images.unsplash.com/photo-1416862291207-4ca732144d83?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1047&q=80');
+            background-size: cover;
+        }
+    </style>
+    <form action="{%url 'welcome'%}" method="post" style="margin-left: 30%;margin-right: 30%;color: white">
+        {%csrf_token%} {% bootstrap_form letterForm layout='inline' %}
+        <input type="submit" class="btn btn-primary" value="Subscribe">
     </form>
     <div style="text-align: center;color: white">
-            <div class="container">
-            
-              <div class="intro">
-                <h2>INSTAGRAM</h2>
-              </div>
-            <br>
-            {% if images %}
-            {% for image in images %}
-            <div class="card bg-dark text-white">
-                <img src="{{image.image.url}}" alt="{{ image.name }}">
-                <div class="card-img-overlay">
-                  <h5>{{image.name}}</h5>
-                  <p>{{image.caption}}</p>
-                  {image_item.name}}
-                  <p class="card-text"><a href="{% url 'newimage' image.id %}"><button type="button" class="btn btn-primary">View</button></a></p>
+            <img class="logo" src="http://www.dallasarboretum.org/assets/img/instagram-word.png"></img>
+            <br> {% if images %} {% for image in images %}
+        <div class="card bg-dark text-white">
+            <img src="{{image.image.url}}" alt="{{ image.name }}">
+            <div class="card-img-overlay">
+                <h5>{{image.name}}</h5>
+                <p>{{image.caption}}</p>
+                {image_item.name}}
+                <p class="card-text">
+                    <a href="{% url 'newimage' image.id %}">
+                        <button type="button" class="btn btn-primary">View</button>
+                    </a>
+                </p>
+                <br> {% endfor %} {% else %}
+                <h4 style="font-family: 'ZCOOL KuaiLe', cursive;"> Upload photos
+                    <a href="{% url 'newimage' %}">here</a>.</h4>
+                {% endif %}
+                <!-- <style>
+            *{
+                background-image: url("https://images.pexels.com/photos/1035103/pexels-photo-1035103.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500");
+                background-size: cover
+                
+            }
+            </style> -->
+                <div class="app-download-links">
+                    <p style="font-family: 'Shadows Into Light', cursive;">Get the app.</p>
+                    <a href="#">
+                        <img src="https://res.cloudinary.com/jorpdesigns/image/upload/v1533403096/download-appstore.png" alt="Download on App Store"
+                        />
+                    </a>
+                    <a href="#">
+                        <img src="https://res.cloudinary.com/jorpdesigns/image/upload/v1533403096/download-googleplay.png" alt="Download on Google Play"
+                        />
+                    </a>
+                    <a href="#">
+                        <img src="https://res.cloudinary.com/jorpdesigns/image/upload/v1533403096/download-microsoft.png" alt="Get from Microsoft"
+                        />
+                    </a>
                 </div>
-              </div>
-              <br>
-            {% endfor %}
-            {% else %}
-            <h4> Upload photos <a href="{% url 'newimage' %}">here</a>.</h4>
-            {% endif %}
+                <style>
+                    .app-download-links {
+                        text-align: center;
+                    }
+
+                    .app-download-links p {
+                        margin-bottom: 130px;
+                    }
+
+                    .app-download-links a img {
+                        height: 45px;
+                        margin: 0 7px 20px;
+                    }
+                </style>
             </div>
-            
-      
-      {% endblock %}
+            {% endblock %}
