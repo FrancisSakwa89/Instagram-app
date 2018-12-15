@@ -64,8 +64,8 @@ def subscribe(request):
     return render(request,'subscribe.html')
 
 def newimage(request):
-  ida = request.user.id
-  profile = Profile.objects.get(user=ida)
+  frank = request.user.id
+  profile = Profile.objects.get(user=frank)
   current_user = request.user
   current_username = request.user.username
   if request.method == 'POST':
@@ -87,7 +87,7 @@ def newimage(request):
 def newcomment(request,id):
   frank = request.user.id
   profile = Profile.objects.get(user=frank)
-  idd = id
+  id = id
 
   current_username = request.user.username
   if request.method == 'POST':
@@ -102,7 +102,7 @@ def newcomment(request,id):
   else:
     form = NewCommentForm()
 
-  return render(request, 'newcomment.html',{'form':form,'profile':profile,'idd':idd})
+  return render(request, 'newcomment.html',{'form':form,'profile':profile,'id':id})
 
 
 
@@ -129,8 +129,8 @@ def profile(request, id):
 
 @login_required(login_url='/accounts/login/')
 def image(request, id):
-  ida = request.user.id
-  profile = Profile.objects.get(user=ida)
+  frank = request.user.id
+  profile = Profile.objects.get(user=frank)
   
   image = Image.objects.get(pk=id)
   comments = Comment.objects.filter(image_id=id)
@@ -138,8 +138,8 @@ def image(request, id):
   user = request.user
   image = Image.objects.get(pk=id)
 
-  sth = Likes.objects.filter(user=user,image=image)
-  rows = sth.count()
+  like = Likes.objects.filter(user=user,image=image)
+  rows = like.count()
 
 
   return render(request, 'image.html',{'profile':profile,'image':image,'comments':comments, 'rows':rows})
