@@ -35,8 +35,8 @@ def picture_detail(request, id):
     user_likes_this = pic.like_set.filter(user=request.user) and True or False    
 
 def search_results(request):
-  ida = request.user.id
-  profile = Profile.objects.get(user=ida)
+  frank = request.user.id
+  profile = Profile.objects.get(user=frank)
 
   this_user = request.user.username
 
@@ -55,14 +55,13 @@ def search_results(request):
     return render(request, 'search.html',{'message':message ,'title':title, 'searched_users':searched_users,'profile':profile})
 
   else:
-    message = 'You haven\'t searched for any users'
+    message = 'You haven\'t searched for any user'
     
     title = 'Search Error'
     return render(request,'search.html',{'message':message,'title':title,'profile':profile})
 
 def subscribe(request):
     return render(request,'subscribe.html')
-    return redirect('welcome')
 
 def newimage(request):
   ida = request.user.id
@@ -86,8 +85,8 @@ def newimage(request):
 
 
 def newcomment(request,id):
-  ida = request.user.id
-  profile = Profile.objects.get(user=ida)
+  frank = request.user.id
+  profile = Profile.objects.get(user=frank)
   idd = id
 
   current_username = request.user.username
@@ -109,18 +108,18 @@ def newcomment(request,id):
 
 @login_required(login_url='/accounts/login/')
 def profile(request, id):
-  ida = request.user.id
-  profile = Profile.objects.get(user=ida)
+  frank = request.user.id
+  profile = Profile.objects.get(user=frank)
 
   user = request.user
   
   myprofile = Profile.objects.get(pk=id)
 
-  follows = Follow.objects.filter(follows=ida)
+  follows = Follow.objects.filter(follows=frank)
   following = follows.count()
-  followed = Follow.objects.filter(followed=ida)
+  followed = Follow.objects.filter(followed=frank)
   followers = followed.count()
-  images = Image.objects.filter(poster=ida)
+  images = Image.objects.filter(poster=frank)
   photocount=images.count()
 
 
@@ -185,13 +184,13 @@ def follow(request, id):
 
 @login_required(login_url='/accounts/login/')
 def newprofile(request):
-  ida = request.user.id
-  profile = Profile.objects.get(user=ida)
+  frank = request.user.id
+  profile = Profile.objects.get(user=frank)
   # current_user = request.user
   # current_username = request.user.username
   
   if request.method == 'POST':
-    instance = get_object_or_404(Profile, user=ida)
+    instance = get_object_or_404(Profile, user=frank)
     form = NewProfileForm(request.POST, request.FILES,instance=instance)
     if form.is_valid():
       form.save()
@@ -199,7 +198,7 @@ def newprofile(request):
       # u_profile.user = current_user
       # u_profile.save()
 
-    return redirect('profile', ida)
+    return redirect('profile', frank)
 
   else:
     form = NewProfileForm()
