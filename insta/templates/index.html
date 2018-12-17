@@ -13,13 +13,14 @@
     </form>
     <div style="text-align: center;color: white">
             <img class="logo" src="http://www.dallasarboretum.org/assets/img/instagram-word.png" width="30%"></img>
-            <br> {% if images %} {% for image in images %}
+            <br>
+            {% if images %}
+            {% for images in images %}
         <div class="card bg-dark text-white">
             <img src="{{image.image.url}}" alt="{{ image.name }}">
             <div class="card-img-overlay">
                 <h5>{{image.name}}</h5>
                 <p>{{image.caption}}</p>
-                {image_item.name}}
                 <p class="card-text">
                     <a href="{% url 'newimage' image.id %}">
                         <button type="button" class="btn btn-primary">View</button>

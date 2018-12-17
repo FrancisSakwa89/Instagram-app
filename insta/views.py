@@ -5,7 +5,7 @@ from .forms import InstaLetterForm
 from django.contrib.auth.decorators import login_required
 from .email import send_welcome_email
 from django.core.exceptions import ObjectDoesNotExist
-from .forms import NewImageForm, NewCommentForm, NewProfileForm
+from .forms import ImageForm, CommentForm, ProfileForm
 from django.contrib.auth.models import User
 from django.shortcuts import get_object_or_404
 from django.db.models import Q
@@ -14,6 +14,9 @@ from django.urls import reverse
 # Create your views here.
 @login_required(login_url='/accounts/login/')
 def welcome(request):
+    id = request.user.id
+    profile = Profile.objects.get(user=id)
+    images = Image.objects.all()
     if request.method == 'POST':
         form = InstaLetterForm(request.POST)
         if form.is_valid():
@@ -25,7 +28,7 @@ def welcome(request):
             HttpResponseRedirect('index.html')
     else:
         form = InstaLetterForm()
-    return render(request, 'index.html', {"letterForm":form})
+    return render(request, 'index.html', {'letterForm':form,'images':images,'profile':profile})
     
 def like(request, picture_id):
     new_like, created = Like.objects.get_or_create(user=request.user, picture_id=picture_id)
@@ -69,7 +72,7 @@ def newimage(request):
   current_user = request.user
   current_username = request.user.username
   if request.method == 'POST':
-    form = NewImageForm(request.POST, request.FILES)
+    form = ImageForm(request.POST, request.FILES)
     if form.is_valid():
       image = form.save(commit=False)
       image.poster = current_user
@@ -78,7 +81,7 @@ def newimage(request):
     return redirect('welcome')
 
   else:
-    form = NewImageForm()
+    form = ImageForm()
 
   return render(request, 'newimage.html',{'form':form,'profile':profile})
 
@@ -91,7 +94,7 @@ def newcomment(request,id):
 
   current_username = request.user.username
   if request.method == 'POST':
-    form = NewCommentForm(request.POST)
+    form = CommentForm(request.POST)
     if form.is_valid():
       comment = form.save(commit=False)
       comment.postername = current_username
@@ -100,7 +103,7 @@ def newcomment(request,id):
     return redirect('image',id)
 
   else:
-    form = NewCommentForm()
+    form = CommentForm()
 
   return render(request, 'newcomment.html',{'form':form,'profile':profile,'id':id})
 
@@ -191,7 +194,7 @@ def newprofile(request):
   
   if request.method == 'POST':
     instance = get_object_or_404(Profile, user=frank)
-    form = NewProfileForm(request.POST, request.FILES,instance=instance)
+    form = ProfileForm(request.POST, request.FILES,instance=instance)
     if form.is_valid():
       form.save()
       # u_profile = form.save(commit=False)
@@ -201,6 +204,6 @@ def newprofile(request):
     return redirect('profile', frank)
 
   else:
-    form = NewProfileForm()
+    form = ProfileForm()
 
   return render(request, 'newprofile.html',{'form':form,'profile':profile})    
