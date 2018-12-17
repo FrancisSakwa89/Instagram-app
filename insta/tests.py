@@ -78,38 +78,38 @@ class ImageTestClass(TestCase):
 
 
 
-class CommentTestClass(TestCase):
-  """  
-  Tests Comment Class and its functions
-  """
-  def setUp(self):
-      self.com = Comment(comment='test comment')
+# class CommentTestClass(TestCase):
+#   """  
+#   Tests Comment Class and its functions
+#   """
+#   def setUp(self):
+#       self.com = Comment(comment='test comment')
 
-  def test_instance(self):
-      self.assertTrue(isinstance(self.com, Comment))
+#   def test_instance(self):
+#       self.assertTrue(isinstance(self.com, Comment))
 
-  def test_save_method(self):
-      """
-      Function to test that location is being saved
-      """
-      self.com.save_comment()
-      coms = Comment.objects.all()
-      self.assertTrue(len(coms) > 0)
+#   def test_save_method(self):
+#       """
+#       Function to test that location is being saved
+#       """
+#       self.com.save_comment()
+#       coms = Comment.objects.all()
+#       self.assertTrue(len(coms) > 0)
 
-  def test_delete_method(self):
-      """
-      Function to test that a location can be deleted
-      """
-      self.com.save_comment()
-      self.com.delete_comment()
-      comments = Comment.objects.all()
-      self.assertTrue(len(comments) == 0)
+#   def test_delete_method(self):
+#       """
+#       Function to test that a location can be deleted
+#       """
+#       self.com.save_comment()
+#       self.com.delete_comment()
+#       comments = Comment.objects.all()
+#       self.assertTrue(len(comments) == 0)
   
-  def test_update_method(self):
-      """
-      Function to test that a location's details can be updates
-      """
-      self.com.save_comment()
-      new_com = Comment.objects.filter(comment='test comment').update(comment='new comment')
-      coms = Comment.objects.get(comment='new comment')
-      self.assertTrue(coms.comment, 'new comment')
+#   def test_update_method(self):
+#       """
+#       Function to test that a location's details can be updates
+#       """
+#       self.com.save_comment()
+#       new_com = Comment.objects.filter(comment='test comment').update(comment='new comment')
+#       coms = Comment.objects.get(comment='new comment')
+#       self.assertTrue(coms.comment, 'new comment')

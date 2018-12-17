@@ -191,7 +191,7 @@ def follow(request, id):
   else:
     rows.delete()
   
-  return HttpResponseRedirect(reverse('welcome'))
+  return HttpResponseRedirect(reverse('newprofile'))
 
 
 

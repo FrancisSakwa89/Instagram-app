@@ -1,14 +1,14 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="container">
+<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
     <div class="intro">
         <h2>Your Profile</h2>
       </div>
 <hr>
 {% if profile.bio %}
 <div id='user-details'>
-    <p><img class="circularsquare" src="{{profile.profpic.url}}" alt=""><span class="repo-owner firstletter" style='padding:1.5em;'>{{user.username}}</span>
+    <p><img class="circularsquare" src="{{profile.photopic.url}}" alt=""><span class="repo-owner firstletter" style='padding:1.5em;'>{{user.username}}</span>
     </p>
     <p>
       <span class='repo-owner' style=>Photos: </span>{{photocount}}
@@ -17,6 +17,9 @@
 
       <span class='repo-owner' style='padding-left:1em;padding-right:0.3em;'>Following: </span>{{following}}
     </p>
+    <a class="follow" href="{% url 'follow' user.id %}">
+            <button type="button" class="btn btn-info">Follow</button>       
+    </a>
 </div>
     {{profile.bio}}
     <p></p>

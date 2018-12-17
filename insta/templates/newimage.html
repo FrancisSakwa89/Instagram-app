@@ -25,11 +25,11 @@
             background-size: cover;
         }
         </style>
-    <div class="intro">
+    <div class="intro" style="text-align: center">
         <h2>ADD PHOTO</h2>
       </div>
 <hr>
-  <form  action="{%url 'newimage'%}" method="post" enctype="multipart/form-data">
+  <form  action="{%url 'newimage'%}" method="post" enctype="multipart/form-data" style="margin-left: 20%;margin-right: 30%">
     {%csrf_token%}
 
     {% bootstrap_form form%}

@@ -1,0 +1,25 @@
+h5{
+    color: blue;
+}
+.firstletter::first-letter{
+    text-transform: uppercase;
+  }
+  
+  .comment {
+    color: black;
+  }
+  
+  .circularsquare {
+    width: 200px;
+    height: 200px;
+    border-radius: 100%;
+  }
+  
+  .repo-owner {
+    font-weight: bold;
+    font-size: 20px;
+  }
+  
+  .follow{
+    float: right;
+  }
