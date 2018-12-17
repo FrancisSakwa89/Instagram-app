@@ -16,19 +16,19 @@ from django.urls import reverse
 def welcome(request):
     id = request.user.id
     profile = Profile.objects.get(user=id)
-    image = Image.objects.all()
-    if request.method == 'POST':
-        form = InstaLetterForm(request.POST)
-        if form.is_valid():
-            name = form.cleaned_data['your_name']
-            email = form.cleaned_data['email']
-            recipient = InstaLetterRecipients(name = name,email =email)
-            recipient.save()
-            send_welcome_email(name,email)
-            HttpResponseRedirect('index.html')
-    else:
-        form = InstaLetterForm()
-    return render(request, 'index.html', {'letterForm':form,'image':image,'profile':profile})
+    images = Image.objects.all()
+    # if request.method == 'POST':
+    #     form = InstaLetterForm(request.POST)
+    #     if form.is_valid():
+    #         name = form.cleaned_data['your_name']
+    #         email = form.cleaned_data['email']
+    #         recipient = InstaLetterRecipients(name = name,email =email)
+    #         recipient.save()
+    #         send_welcome_email(name,email)
+    #         HttpResponseRedirect('index.html')
+    # else:
+    #     form = InstaLetterForm()
+    return render(request, 'index.html', {'images':images,'profile':profile})
     
 def like(request, picture_id):
     new_like, created = Like.objects.get_or_create(user=request.user, picture_id=picture_id)
@@ -115,7 +115,7 @@ def newcomment(request,id):
   else:
     form = CommentForm()
 
-  return render(request, 'newcomment.html',{'form':form,'profile':profile,'id':id})
+  return render(request, 'comment.html',{'form':form,'profile':profile,'id':id})
 
 
 

@@ -7,26 +7,23 @@
             background-size: cover;
         }
     </style>
-    <form action="{%url 'welcome'%}" method="post" style="margin-left: 30%;margin-right: 30%;color: white">
-        {%csrf_token%} {% bootstrap_form letterForm layout='inline' %}
-        <input type="submit" class="btn btn-primary" value="Subscribe">
-    </form>
+    
     <div style="text-align: center;color: white">
             <img class="logo" src="http://www.dallasarboretum.org/assets/img/instagram-word.png" width="30%"></img>
             <br>
             {% if images %}
-            {% for images in image %}
-        <div class="card bg-dark text-white">
-            <img src="{{image.image.url}}" alt="{{ image.name }}">
-            <div class="card-img-overlay">
-                <h5>{{image.name}}</h5>
-                <p>{{image.caption}}</p>
-                <p class="card-text">
-                    <a href="{% url 'newimage' image.id %}">
-                        <button type="button" class="btn btn-primary">View</button>
-                    </a>
-                </p>
-                <br> {% endfor %} {% else %}
+{% for image in images %}
+<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+    <img src="{{image.image.url}}" height="200px" width="300px" alt="{{ image.name }}">
+    <div class="card-img-overlay">
+      <h5 class="card-title firstletter">{{image.name}}</h5>
+      <p class="card-text firstletter">{{image.caption}}</p>
+      <p class="card-text"><a href="{% url 'image' image.id %}"><button type="button" class="btn btn-primary">View</button></a></p>
+    </div>
+  </div>
+  <br>
+{% endfor %}
+{% else %}
                 <h4 style="font-family: 'ZCOOL KuaiLe', cursive;"> Upload photos
                     <a href="{% url 'newimage' %}">here</a>.</h4>
                 {% endif %}
