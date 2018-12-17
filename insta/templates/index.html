@@ -15,7 +15,7 @@
             <img class="logo" src="http://www.dallasarboretum.org/assets/img/instagram-word.png" width="30%"></img>
             <br>
             {% if images %}
-            {% for images in images %}
+            {% for images in image %}
         <div class="card bg-dark text-white">
             <img src="{{image.image.url}}" alt="{{ image.name }}">
             <div class="card-img-overlay">
@@ -57,7 +57,7 @@
                         text-align: center;
                     }
 
-                    .app-download-links p {
+                    .app-download-links p{
                         margin-bottom: 130px;
                     }
 

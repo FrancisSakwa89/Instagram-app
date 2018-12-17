@@ -16,7 +16,7 @@ from django.urls import reverse
 def welcome(request):
     id = request.user.id
     profile = Profile.objects.get(user=id)
-    images = Image.objects.all()
+    image = Image.objects.all()
     if request.method == 'POST':
         form = InstaLetterForm(request.POST)
         if form.is_valid():
@@ -28,7 +28,7 @@ def welcome(request):
             HttpResponseRedirect('index.html')
     else:
         form = InstaLetterForm()
-    return render(request, 'index.html', {'letterForm':form,'images':images,'profile':profile})
+    return render(request, 'index.html', {'letterForm':form,'image':image,'profile':profile})
     
 def like(request, picture_id):
     new_like, created = Like.objects.get_or_create(user=request.user, picture_id=picture_id)
@@ -64,8 +64,18 @@ def search_results(request):
     return render(request,'search.html',{'message':message,'title':title,'profile':profile})
 
 def subscribe(request):
-    return render(request,'subscribe.html')
-
+    if request.method == 'POST':
+        form = InstaLetterForm(request.POST)
+        if form.is_valid():
+            name = form.cleaned_data['your_name']
+            email = form.cleaned_data['email']
+            recipient = InstaLetterRecipients(name = name,email =email)
+            recipient.save()
+            send_welcome_email(name,email)
+            HttpResponseRedirect('index.html')
+    else:
+        form = InstaLetterForm()
+    return render(request, 'subscribe.html', {'letterForm':form})
 def newimage(request):
   frank = request.user.id
   profile = Profile.objects.get(user=frank)
