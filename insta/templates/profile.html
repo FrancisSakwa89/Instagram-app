@@ -1,57 +1,61 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-    <div class="intro">
-        <h2>Your Profile</h2>
-      </div>
-<hr>
-{% if profile.bio %}
-<div id='user-details'>
-    <p><img class="circularsquare" src="{{profile.photopic.url}}" alt=""><span class="repo-owner firstletter" style='padding:1.5em;'>{{user.username}}</span>
-    </p>
-    <p>
-      <span class='repo-owner' style=>Photos: </span>{{photocount}}
+<div class="container">
+      <div class="intro" style="background: linear-gradient(to right, #16222a, #3a6073);color: whitesmoke">
+          <h2>Your Profile</h2>
+  <hr>
+  
+    {% if profile.bio %}
+    <div id='user-details'>
+        <p><img class="circularsquare" src="{{profile.photopic.url}}" alt=""><span class="repo-owner firstletter" style='padding:1.5em;'>{{user.username}}</span>
+        </p>
+        <p>
+          <span class='repo-owner' style=>Photos: </span>{{photocount}}
+    
+          <span class='repo-owner' style='padding-left:1em;padding-right:0.3em;'>Followers: </span>{{followers}}
+    
+          <span class='repo-owner' style='padding-left:1em;padding-right:0.3em;'>Following: </span>{{following}}
+        </p>
+        <a class="follow" href="{% url 'follow' user.id %}">
+                <button type="button" class="btn btn-info">Follow</button>       
+        </a>
+    </div>
+        {{profile.bio}}
+        <p></p>
+        <a href="{% url 'newprofile' %}"><button type="button" class="btn btn-info">Update Profile</button></a>   
+        <br>
+        <br>
+     {% else %}
+     <p></p>
+        <a href="{% url 'newprofile' %}"><button type="button" class="btn btn-info">Update Profile</button></a>   
+        <br>
+        <br>
+      {% endif %}
+    </div>
 
-      <span class='repo-owner' style='padding-left:1em;padding-right:0.3em;'>Followers: </span>{{followers}}
-
-      <span class='repo-owner' style='padding-left:1em;padding-right:0.3em;'>Following: </span>{{following}}
-    </p>
-    <a class="follow" href="{% url 'follow' user.id %}">
-            <button type="button" class="btn btn-info">Follow</button>       
-    </a>
-</div>
-    {{profile.bio}}
-    <p></p>
-    <a href="{% url 'newprofile' %}"><button type="button" class="btn btn-info">Update Profile</button></a>   
-    <br>
-    <br>
- {% else %}
- <p></p>
-    <a href="{% url 'newprofile' %}"><button type="button" class="btn btn-info">Update Profile</button></a>   
-    <br>
-    <br>
-  {% endif %}
-    <div class="your-photos">
-      <h4>Your photos</h4>
-      <p></p>
-      {% if images %}
-{% for image in images %}
-<div class="card bg-dark text-white">
-    <img src="{{image.image.url}}" alt="{{ image.name }}">
-    <div class="card-img-overlay">
-      <h5 class="card-title firstletter">{{image.name}}</h5>
-      <p class="card-text firstletter">{{image.caption}}</p>
-      <p class="card-text"><a href="{% url 'image' image.id %}"><button type="button" class="btn btn-primary">View</button></a></p>
+      <!-- <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2"> -->
+          <h4>Your photos</h4>
+          <p></p>
+          {% if images %}
+          {% for image in images %}
+      <div class="row" style="background: linear-gradient(to right, #16222a, #3a6073);">
+        <div class="col-md-4">
+        <div class="card bg-dark text-white">
+            <img src="{{image.image.url}}" height="230px" width="98%" alt="{{ image.name }}">
+            <div class="card-img-overlay" style="text-align: center">
+              <h5>{{image.name}}</h5>
+              <p style="color:whitesmoke">{{image.caption}}</p>
+              <p style="text-align: center"><a href="{% url 'image' image.id %}"><button type="button" class="btn btn-primary">View</button></a></p>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+    {% else %}
+    <h4> Upload Photos  <a href="{% url 'newimage' %}">here</a>.</h4>
+    {% endif %}
     </div>
   </div>
-  <br>
-{% endfor %}
-{% else %}
-<h4> Upload Photos  <a href="{% url 'newimage' %}">here</a>.</h4>
-{% endif %}
-
-    </div>
 </div>
 
 

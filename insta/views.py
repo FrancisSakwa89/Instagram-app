@@ -136,7 +136,7 @@ def profile(request, id):
   photocount=images.count()
 
 
-  return render(request, 'profile.html',{'profile':profile,'myprofile':myprofile,'user':user,'following':following,'followers':followers,'photocount':photocount,'images':images})
+  return render(request, 'profile.html',{'myprofile':myprofile,'profile':profile,'user':user,'following':following,'followers':followers,'photocount':photocount,'images':images})
 
 
 
