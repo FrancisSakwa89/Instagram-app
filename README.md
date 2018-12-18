@@ -1,7 +1,7 @@
-[![Django](https://img.shields.io/badge/django-1.11-blue.svg)](https://www.djangoproject.com/)
-[![Python 3.6](https://img.shields.io/badge/python-3.6-blue.svg)](https://www.python.org/downloads/release/python-360/)
+[![Django](https://img.shields.io/badge/django-1.11-green.svg)](https://www.djangoproject.com/)
+[![Python 3.6](https://img.shields.io/badge/python-3.6-yellow.svg)](https://www.python.org/downloads/release/python-360/)
 
-# [INSTAGRAM CLONE](https://github.com/FrancisSakwa89/instagram-app.git/)]
+# [INSTAGRAM CLONE](https://github.com/FrancisSakwa89/instagram-app.git/)
 ###### By **[Francis Sakwa](https://github.com/FrancisSakwa89)**
 ## Description
 A clone of the website for the popular  app Instagram.
@@ -33,13 +33,6 @@ _*pip install pillow._*
 4. Users can follow other users and see their pictures on their timeline.
 5. Users can like a picture and leave a comment on it.
 
-- [x] [![Git](https://img.shields.io/badge/git-2.17.1-rgb(245%2C%2077%2C%2039).svg)](https://git-scm.com/)
-- [x] [![Python 3.6](https://img.shields.io/badge/python-3.6-blue.svg)](https://www.python.org/downloads/release/python-360/)
-- [x] [![Pip](https://img.shields.io/badge/pypi-v18.1-blue.svg)](https://pypi.org/project/pip/)
-- [x] [![Virtualenv](https://img.shields.io/badge/virtualenv-16.1.0-brightgreen.svg)](https://virtualenv.pypa.io/en/latest/installation/)
-- [![Django](https://img.shields.io/badge/django-1.11-blue.svg)](https://www.djangoproject.com/)
-- [x] [![PostgreSQL](https://img.shields.io/badge/postgreSQL-11.1-darkblue.svg)](https://www.postgresql.org/)
-
 
 # Running Tests
 * python3.6 manage.py test
@@ -47,13 +40,13 @@ _*pip install pillow._*
 
 # Technologies & Resources/Tools Used
 Technologies used include:
-[![Django](https://img.shields.io/badge/django-1.11-blue.svg)](https://www.djangoproject.com/)
-[![Python 3.6](https://img.shields.io/badge/python-3.6-blue.svg)](https://www.python.org/downloads/release/python-360/)
+[![Django](https://img.shields.io/badge/django-1.11-skyblue.svg)](https://www.djangoproject.com/)
+[![Python 3.6](https://img.shields.io/badge/python-3.6-lightblue.svg)](https://www.python.org/downloads/release/python-360/)
 [![PostgreSQL](https://img.shields.io/badge/postgreSQL-11.1-darkblue.svg)](https://www.postgresql.org/)
 [![HEROKU](https://img.shields.io/badge/heroku-v24-%239E7CC1.svg)](https://devcenter.heroku.com/articles/heroku-cli)
 [![Git](https://img.shields.io/badge/git-2.17.1-rgb(245%2C%2077%2C%2039).svg)](https://git-scm.com/)
 [![Bootstrap](https://img.shields.io/badge/bootstrap-3.0.0-purple.svg)](https://getbootstrap.com/)
-[![Pip](https://img.shields.io/badge/pypi-v18.1-blue.svg)](https://pypi.org/project/pip/)
+[![Pip](https://img.shields.io/badge/pypi-v18.1-black.svg)](https://pypi.org/project/pip/)
 [![HTML5](https://img.shields.io/badge/html-html5-e34f26.svg)](https://www.w3schools.com/html/html5_intro.asp)
 
 
