@@ -1,10 +1,5 @@
-<<<<<<< HEAD
 # [![INSTAGRAM CLONE](https://github.com/FrancisSakwa89)]
 ###### By **[![FRANCIS SAKWA](https://github.com/FrancisSakwa89)]**
-=======
-# INSTAGTRAM CLONE
-###### By **[Francis Sakwa](https://github.com/FrancisSakwa89)**
->>>>>>> b01dfc38f6be18188c7cdea9ad960d360d60250a
 
 ## Description
 A clone of the website for the popular photo app Instagram.
@@ -43,15 +38,9 @@ _*pip install pillow._*
 # Technologies & Resources/Tools Used
 Technologies used include:
 * Python3.6(Django) 
-<<<<<<< HEAD
 * CSS
 [![HTML5](https://img.shields.io/badge/html5-e34f26.svg)](https://www.w3schools.com/html/html5_intro.asp)
 [![Bootstrap](https://img.shields.io/badge/bootstrap-3.0.0-purple.svg)](https://getbootstrap.com/)
-=======
-* HTML
-* CSS
-* Bootstrap
->>>>>>> b01dfc38f6be18188c7cdea9ad960d360d60250a
 * Postgres Database
 * Heroku - for app hosting live
 * Git - for app details
@@ -61,9 +50,5 @@ For more info or assistance(If there is a bug in my code), please contact:
 
 Sakwa Francis -- email: sakwafrancis89@gmail.com
 
-<<<<<<< HEAD
 ![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg) copy;2018 [Francis Sakwa](https://github.com/FrancisSakwa89/)
-=======
-[MIT License](https://choosealicense.com/licenses/mit/#) copy;2018 [Francis Sakwa](https://github.com/FrancisSakwa89/)
->>>>>>> b01dfc38f6be18188c7cdea9ad960d360d60250a
 
